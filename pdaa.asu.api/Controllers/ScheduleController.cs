@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 namespace pdaa.asu.api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ScheduleController : ControllerBase
     {
         private static readonly string[] Summaries = new[]

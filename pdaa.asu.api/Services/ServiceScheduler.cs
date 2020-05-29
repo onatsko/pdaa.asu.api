@@ -14,12 +14,12 @@ namespace pdaa.asu.api.Services
         private readonly string firstMonday = "02/09/2019";
 
         private IUnitOfWork _uow;
-        private ServiceCurrentUser _serviceCurrentUser;
+       // private ServiceCurrentUser _serviceCurrentUser;
 
-        public ServiceScheduler(IUnitOfWork uow, ServiceCurrentUser serviceCurrentUser)
+        public ServiceScheduler(IUnitOfWork uow)
         {
             _uow = uow;
-            _serviceCurrentUser = serviceCurrentUser;
+           // _serviceCurrentUser = serviceCurrentUser;
         }
 
         public string GetKadrFullName(long kadrPK)
@@ -44,7 +44,7 @@ namespace pdaa.asu.api.Services
             return kadr;
         }
 
-        public Schedule GetScheduler(long kadrPK, int weekNum = 0)
+        public Schedule GetScheduler(long kadrPK, int weekNum, long currentUserId)
         {
             var result = new Schedule();
 
@@ -154,7 +154,7 @@ namespace pdaa.asu.api.Services
             }
 
             _uow.repoLog.AddLog(
-                _serviceCurrentUser.GetCurrentUserId(), 
+                currentUserId, 
                 "BlazorSite", 
                 kadrPK,
                 $"Запрос расписания для кода '{kadrPK}' неделя {weekNum}", 
@@ -191,15 +191,15 @@ namespace pdaa.asu.api.Services
             return _uow.repoGroup.Get(groupPK);
         }
 
-        public void RegisterSiteQuerySchedule(string kadr, string week)
+        public void RegisterSiteQuerySchedule(string kadr, string week, long currentUserId)
         {
-            _uow.repoLog.AddLog(_serviceCurrentUser.GetCurrentUserId(), "BlazorSite", 0, "Запрос расписания", $"kadr - {kadr}", $"week - {week}");
+            _uow.repoLog.AddLog(currentUserId, "BlazorSite", 0, "Запрос расписания", $"kadr - {kadr}", $"week - {week}");
 
             //_uow.repoSchedule.RegisterSiteQuerySchedule(kadr, week);
         }
-        public void RegisterSiteQueryGroupList(string kadr, long groupPK)
+        public void RegisterSiteQueryGroupList(string kadr, long groupPK, long currentUserId)
         {
-            _uow.repoLog.AddLog(_serviceCurrentUser.GetCurrentUserId(), "BlazorSite", groupPK, "Запрос списка группы", $"kadr - {kadr}", $"groupPK - {groupPK}");
+            _uow.repoLog.AddLog(currentUserId, "BlazorSite", groupPK, "Запрос списка группы", $"kadr - {kadr}", $"groupPK - {groupPK}");
             //_uow.repoSchedule.RegisterSiteQueryGroupList(kadr, groupPK);
         }
 

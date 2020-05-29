@@ -143,7 +143,7 @@ namespace pdaa.asu.api.Persistence
 
             using (MD5 md5Hash = MD5.Create())
             {
-                string passMD5 = ServiceCurrentUser.GetMd5Hash(md5Hash, password);
+                string passMD5 = ServiceCommon.GetMd5Hash(md5Hash, password);
                 strCommand = "exec dbo.usp_Kadry_spr_ofKadr_upd_new " +
                              "  @IdKadr=" + kadrPK +
                              ", @ControlName='TxtUs_psw_md5_confirm'" +

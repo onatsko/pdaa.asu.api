@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "f07629b5-28b4-49ce-ae6f-ab7b971ea98b",
+		"name": "Pdaa.Asu.Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/Authentication",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "kadrId",
+						"value": "7",
+						"disabled": true
+					},
+					{
+						"key": "kadrPass",
+						"value": "121121",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"Name\":\"3\",\n\t\"Password\": \"12363211\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://{{site}}/api/Authentication/login",
+					"protocol": "https",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"api",
+						"Authentication",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "api/schedule",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "kadrId",
+						"value": "7"
+					},
+					{
+						"key": "kadrPass",
+						"value": "121121",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://{{site}}/api/schedule?kadrId=3&weekNum=0",
+					"protocol": "https",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"api",
+						"schedule"
+					],
+					"query": [
+						{
+							"key": "kadrId",
+							"value": "3"
+						},
+						{
+							"key": "weekNum",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
