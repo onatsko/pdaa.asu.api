@@ -29,7 +29,7 @@ namespace pdaa.asu.api
                         config.AddEnvironmentVariables();
                     }
                         )
-                        .UseUrls("https://*:4455;https://localhost:4456;https://0.0.0.0:4456")
+                        .UseUrls("https://*:4456;https://localhost:4456;https://0.0.0.0:4456")
                         .UseStartup<Startup>()
 
                         .UseSerilog((context, cfg) =>

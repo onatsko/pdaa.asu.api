@@ -67,9 +67,9 @@ namespace pdaa.asu.api
             services.AddSingleton<IJwtSigningEncodingKey>(signingKey);
             //*** JWT
 
-
             services.AddControllers();
 
+            //*** JWT 
             const string jwtSchemeName = "JwtBearer";
             var signingDecodingKey = (IJwtSigningDecodingKey)signingKey;
             services
@@ -87,13 +87,14 @@ namespace pdaa.asu.api
                         ValidIssuer = "pdaa.asu.api",
 
                         ValidateAudience = true,
-                        ValidAudience = "pdaa.asu.site",
+                        ValidAudience = "pdaa.asu.client",
 
                         ValidateLifetime = true,
 
                         ClockSkew = TimeSpan.FromSeconds(5)
                     };
                 });
+            //*** JWT
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

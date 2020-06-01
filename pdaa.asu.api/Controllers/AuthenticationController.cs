@@ -47,7 +47,7 @@ namespace pdaa.asu.api.Controllers
                 issuer: "pdaa.asu.api",
                 audience: "pdaa.asu.client",
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(5),
+                expires: DateTime.Now.AddMinutes(60),
                 signingCredentials: new SigningCredentials(
                     signingEncodingKey.GetKey(),
                     signingEncodingKey.SigningAlgorithm)
