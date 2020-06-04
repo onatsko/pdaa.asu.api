@@ -59,10 +59,12 @@ namespace pdaa.asu.api
                 config.AddMap(new MapTest_ShablonDetail());
                 config.AddMap(new MapTest_StartedTestQuestion());
                 config.AddMap(new MapTest_StartedTestAnswer());
+                config.AddMap(new MapZnoExam());
+                config.AddMap(new MapZnoSpec());
             });
 
             //*** JWT
-            const string signingSecurityKey = "0d5b3235a8b403c3dab9c3f4f65c07fcalskd234n1k41230";
+            string signingSecurityKey = Configuration.GetSection("PdaaToken:signingSecurityKey").Value; // "PDAA_2020-06-01_0d5b3235a8b403c3dab9c3f4f65c07fcalskd234n1k41230";
             var signingKey = new SigningSymmetricKey(signingSecurityKey);
             services.AddSingleton<IJwtSigningEncodingKey>(signingKey);
             //*** JWT
@@ -84,10 +86,10 @@ namespace pdaa.asu.api
                         IssuerSigningKey = signingDecodingKey.GetKey(),
 
                         ValidateIssuer = true,
-                        ValidIssuer = "pdaa.asu.api",
+                        ValidIssuer = Configuration.GetSection("PdaaToken:issuer").Value, //"pdaa.asu.api",
 
                         ValidateAudience = true,
-                        ValidAudience = "pdaa.asu.client",
+                        ValidAudience = Configuration.GetSection("PdaaToken:audience").Value, //"pdaa.asu.client",
 
                         ValidateLifetime = true,
 

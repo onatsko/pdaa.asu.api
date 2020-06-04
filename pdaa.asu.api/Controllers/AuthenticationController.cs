@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using pdaa.asu.api.JwsAuthentication;
 using pdaa.asu.api.Services;
@@ -17,9 +18,12 @@ namespace pdaa.asu.api.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly IServiceAuthentication _serviceAuthentication;
-        public AuthenticationController(IServiceAuthentication serviceAuthentication)
+        private readonly IConfiguration _configuration;
+
+        public AuthenticationController(IServiceAuthentication serviceAuthentication, IConfiguration configuration)
         {
             _serviceAuthentication = serviceAuthentication;
+            _configuration = configuration;
         }
 
         [HttpPost("login")]
@@ -43,11 +47,13 @@ namespace pdaa.asu.api.Controllers
             };
 
             // 3. Генерируем JWT.
+            var expiresInMinutes = 60;
+            int.TryParse(_configuration.GetSection("PdaaToken:expiresMinute").Value, out expiresInMinutes);
             var token = new JwtSecurityToken(
-                issuer: "pdaa.asu.api",
-                audience: "pdaa.asu.client",
+                issuer: _configuration.GetSection("PdaaToken:issuer").Value, // "pdaa.asu.api",
+                audience: _configuration.GetSection("PdaaToken:audience").Value, // "pdaa.asu.client",
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(60),
+                expires: DateTime.Now.AddMinutes(expiresInMinutes),
                 signingCredentials: new SigningCredentials(
                     signingEncodingKey.GetKey(),
                     signingEncodingKey.SigningAlgorithm)

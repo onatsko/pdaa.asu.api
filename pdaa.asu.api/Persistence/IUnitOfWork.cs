@@ -13,5 +13,6 @@ namespace pdaa.asu.api.Persistence
         IRepoEducPlanSpec repoEducPlanSpec { get; }
         IRepoLog repoLog { get; }
         IRepoTests repoTests { get; }
+        IRepoZno repoZno { get; }
     }
 }

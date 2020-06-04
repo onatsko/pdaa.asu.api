@@ -38,5 +38,8 @@
         private IRepoTests _repoTests;
         public IRepoTests repoTests => _repoTests ?? (_repoTests = new RepoTests(_cnn));
 
+        private IRepoZno _repoZno;
+        public IRepoZno repoZno => _repoZno ?? (_repoZno = new RepoZno(_cnn));
+
     }
 }
