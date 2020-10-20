@@ -1,11 +1,10 @@
-﻿using System.Linq;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using pdaa.asu.api.Persistence;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
+using pdaa.asu.api.Persistence;
+using System.Linq;
+using System.Security.Claims;
 
 namespace pdaa.asu.api.Controllers
 {
@@ -14,11 +13,6 @@ namespace pdaa.asu.api.Controllers
     [ApiController]
     public class KadrController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<KadrController> _logger;
         private readonly IUnitOfWork _uow;
 
