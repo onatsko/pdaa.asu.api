@@ -10,6 +10,7 @@
 
         public string Code { get; set; }
         public string Name { get; set; }
+        public string EducProgram { get; set; }
 
 
         public ZnoSpec()
@@ -20,11 +21,12 @@
             //доп.свойства
             Code = "";
             Name = "";
+            EducProgram = "";
         }
 
         protected bool Equals(ZnoSpec other)
         {
-            return Id == other.Id && IsDel == other.IsDel && Code == other.Code && Name == other.Name;
+            return Id == other.Id && IsDel == other.IsDel && Code == other.Code && Name == other.Name && EducProgram == other.EducProgram;
         }
 
         public override bool Equals(object obj)
@@ -43,6 +45,7 @@
                 hashCode = (hashCode * 397) ^ IsDel.GetHashCode();
                 hashCode = (hashCode * 397) ^ (Code != null ? Code.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Name != null ? Name.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (EducProgram != null ? EducProgram.GetHashCode() : 0);
                 return hashCode;
             }
         }

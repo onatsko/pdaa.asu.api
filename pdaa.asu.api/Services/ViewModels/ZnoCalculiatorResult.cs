@@ -26,6 +26,8 @@ namespace pdaa.asu.api.Services.ViewModels
         public long Exam5Id { get; set; }
         public bool IsBudget { get; set; }
         public bool IsContract { get; set; }
+        public string EducVidName { get; set; }
+        public int Cost { get; set; }
 
         public ZnoCalculatorResult()
         {
@@ -47,6 +49,8 @@ namespace pdaa.asu.api.Services.ViewModels
             Exam5Id = 0;
             IsBudget = false;
             IsContract = false;
+            EducVidName = string.Empty;
+            Cost = 0;
         }
 
         

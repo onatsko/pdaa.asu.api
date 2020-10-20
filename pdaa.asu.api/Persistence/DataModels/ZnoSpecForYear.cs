@@ -11,7 +11,7 @@
         public long SpecId { get; set; }
         public string SpecCode { get; set; }
         public string SpecName { get; set; }
-
+        public string EducProgram { get; set; }
 
         public ZnoSpecForYear()
         {
@@ -22,11 +22,12 @@
             SpecId = 0;
             SpecCode = "";
             SpecName = "";
+            EducProgram = "";
         }
 
         protected bool Equals(ZnoSpecForYear other)
         {
-            return Id == other.Id && IsDel == other.IsDel && SpecCode == other.SpecCode && SpecName == other.SpecName;
+            return Id == other.Id && IsDel == other.IsDel && SpecCode == other.SpecCode && SpecName == other.SpecName && EducProgram == other.EducProgram;
         }
 
         public override bool Equals(object obj)
@@ -45,6 +46,7 @@
                 hashCode = (hashCode * 397) ^ IsDel.GetHashCode();
                 hashCode = (hashCode * 397) ^ (SpecCode != null ? SpecCode.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (SpecName != null ? SpecName.GetHashCode() : 0);
+                hashCode = (hashCode * 397) ^ (EducProgram != null ? EducProgram.GetHashCode() : 0);
                 return hashCode;
             }
         }

@@ -32,7 +32,7 @@ namespace pdaa.asu.api.Persistence
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                return db.Query<ZnoCalculatorResult>($"dbo.usp_Zno_ExamsForSpecForYear_list_calculator @year = {year}, @exam1 = {exam1Id}, @exam2 = {exam2Id}, @exam3 = {exam3Id}, @exam4 = {exam4Id}, @exam5 = {exam5Id}")
+                return db.Query<ZnoCalculatorResult>($"exec dbo.usp_Zno_ExamsForSpecForYear_list_calculator @year = {year}, @exam1 = {exam1Id}, @exam2 = {exam2Id}, @exam3 = {exam3Id}, @exam4 = {exam4Id}, @exam5 = {exam5Id}")
                     .ToList();
             }
         }
@@ -48,6 +48,7 @@ namespace pdaa.asu.api.Persistence
                     tblZNO_Spec.Id
                     , SpecCode
                     , SpecName
+                    , EducProgram
                     FROM dbo.tblZNO_SpecForYear
                     inner join dbo.tblZNO_Spec on ZnoSpecId = tblZNO_Spec.Id
                 where

@@ -10,6 +10,7 @@ namespace pdaa.asu.api.Persistence.ModelMaps
             Map(u => u.Id).ToColumn("Id");
             Map(u => u.Code).ToColumn("SpecCode");
             Map(u => u.Name).ToColumn("SpecName");
+            Map(u => u.EducProgram).ToColumn("EducProgram");
         }
     }
 }

@@ -58,7 +58,7 @@ namespace pdaa.asu.api.Controllers
             [FromQuery] long exam5
             )
         {
-            var calculator = _uow.repoZno.GetZnoCalculator(year, exam1, exam2, exam3, exam4, exam5);
+            List<ZnoCalculatorResult> calculator = _uow.repoZno.GetZnoCalculator(year, exam1, exam2, exam3, exam4, exam5);
 
             foreach (var row in calculator)
             {

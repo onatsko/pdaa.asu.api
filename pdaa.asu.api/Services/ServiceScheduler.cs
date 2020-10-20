@@ -11,7 +11,7 @@ namespace pdaa.asu.api.Services
 {
     public class ServiceScheduler
     {
-        private readonly string firstMonday = "02/09/2019";
+        private readonly string firstMonday = "31/08/2020";
 
         private IUnitOfWork _uow;
        // private ServiceCurrentUser _serviceCurrentUser;
